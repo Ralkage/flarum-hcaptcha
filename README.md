@@ -1,6 +1,6 @@
 # Flarum hCaptcha
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/ralkage/flarum-hcaptcha.svg)](https://packagist.org/packages/ralkage/flarum-hcaptcha) [![Total Downloads](https://img.shields.io/packagist/dt/ralkage/flarum-hcaptcha.svg)](https://packagist.org/packages/ralkage/flarum-hcaptcha)
+![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge) [![Latest Stable Version](https://img.shields.io/packagist/v/ralkage/flarum-hcaptcha.svg?style=for-the-badge)](https://packagist.org/packages/ralkage/flarum-hcaptcha) [![PayPal](https://img.shields.io/badge/paypal-ralkage-4cl?style=for-the-badge&logo=paypal)](https://paypal.me/ralkage)
 
 A [Flarum](http://flarum.org) extension. Increase your Flarum forum's security with hCaptcha.
 
