@@ -1,0 +1,48 @@
+{
+    "name": "ralkage/flarum-hcaptcha",
+    "description": "Increase your Flarum forum's security with hCaptcha.",
+    "keywords": [
+        "flarum",
+        "hCaptcha",
+        "antispam",
+        "anti-spam",
+        "captcha",
+        "spam",
+        "recaptcha"
+    ],
+    "type": "flarum-extension",
+    "license": "MIT",
+    "require": {
+        "flarum/core": "^1.0",
+        "mitloshuk/hcaptcha": "^1.2"
+    },
+    "authors": [
+        {
+            "name": "Christian Lopez",
+            "email": "me@ralkage.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/Ralkage/flarum-hcaptcha",
+        "forum": "https://discuss.flarum.org/d/TBD"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ralkage\\HCaptcha\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "hCaptcha",
+            "category": "feature",
+            "icon": {
+                "image": "icon.svg",
+                "backgroundColor": "#fff"
+            }
+        },
+        "extiverse": {
+            "discuss": ""
+        }
+    }
+}
