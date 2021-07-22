@@ -25,7 +25,7 @@
     ],
     "support": {
         "source": "https://github.com/Ralkage/flarum-hcaptcha",
-        "forum": "https://discuss.flarum.org/d/TBD"
+        "forum": "https://discuss.flarum.org/d/28257"
     },
     "autoload": {
         "psr-4": {
@@ -37,12 +37,13 @@
             "title": "hCaptcha",
             "category": "feature",
             "icon": {
-                "image": "icon.svg",
-                "backgroundColor": "#fff"
+                "name": "fas fa-hand-paper",
+                "backgroundColor": "#00bcbf",
+                "color": "#fff"
             }
         },
         "extiverse": {
-            "discuss": ""
+            "discuss": "https://discuss.flarum.org/d/28257"
         }
     }
 }
