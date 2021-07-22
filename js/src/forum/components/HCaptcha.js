@@ -5,7 +5,7 @@ import load from 'external-load';
 const addResources = async () => {
   if (app.hcaptchaLoaded) return;
 
-  await load.js(`https://hcaptcha.com/1/api.js?hl=${app.translator.locale}&render=explicit`);
+  await load.js(`https://hcaptcha.com/1/api.js?render=explicit`);
 
   app.hcaptchaLoaded = true;
 };
