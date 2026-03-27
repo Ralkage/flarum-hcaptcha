@@ -1,34 +1,32 @@
 import { extend, override } from 'flarum/common/extend';
-import SignUpModal from 'flarum/forum/components/SignUpModal';
 import HCaptcha from './components/HCaptcha';
 import HCaptchaState from './states/HCaptchaState';
 
 export default function () {
   const isInvisible = app.data['ralkage-hcaptcha.type'] === 'invisible';
+  const signUpPath = 'flarum/forum/components/SignUpModal';
 
-  extend(SignUpModal.prototype, 'oninit', function () {
+  extend(signUpPath, 'oninit', function () {
     this.hcaptcha = new HCaptchaState(
       () => {
         if (isInvisible) {
-          // Create "fake" event so this works when other extensions extend onsubmit as well
           const event = new Event('submit');
           event.isHcaptchaSecondStep = true;
           this.onsubmit(event);
         }
       },
       (alertAttrs) => {
-        // Removes the spinner on the submit button so we can try again
         this.loaded();
         this.alertAttrs = alertAttrs;
       }
     );
   });
 
-  extend(SignUpModal.prototype, 'submitData', function (data) {
+  extend(signUpPath, 'submitData', function (data) {
     data['h-captcha-response'] = this.hcaptcha.getResponse();
   });
 
-  extend(SignUpModal.prototype, 'fields', function (fields) {
+  extend(signUpPath, 'fields', function (fields) {
     fields.add(
       'hcaptcha',
       HCaptcha.component({
@@ -38,15 +36,12 @@ export default function () {
     );
   });
 
-  extend(SignUpModal.prototype, 'onerror', function () {
+  extend(signUpPath, 'onerror', function () {
     this.hcaptcha.reset();
   });
 
-  override(SignUpModal.prototype, 'onsubmit', function (original, e) {
+  override(signUpPath, 'onsubmit', function (original, e) {
     if (isInvisible && !e.isHcaptchaSecondStep) {
-      // When hcaptcha is invisible, onsubmit will be called two times
-      // First time with normal event, we will call hCaptcha.execute
-      // Second time is called from hcaptcha callback with a special isHcaptcha attribute
       e.preventDefault();
       this.loading = true;
       this.hcaptcha.execute();

@@ -1,7 +1,7 @@
 import app from 'flarum/admin/app';
 
 app.initializers.add('ralkage/flarum-ext-hcaptcha', () => {
-  app.extensionData
+  app.registry
     .for('ralkage-hcaptcha')
     .registerSetting({
       label: app.translator.trans('ralkage-hcaptcha.admin.settings.help_text', {

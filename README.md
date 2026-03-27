@@ -12,7 +12,7 @@ Increase your [Flarum](https://flarum.org) forum's security with [hCaptcha](http
 
 ## Requirements
 
-- Flarum `^1.8`
+- Flarum `^2.0`
 - PHP `^8.0`
 
 ## Links

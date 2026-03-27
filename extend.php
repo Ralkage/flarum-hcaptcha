@@ -2,7 +2,9 @@
 
 namespace Ralkage\HCaptcha;
 
-use Flarum\Api\Serializer\ForumSerializer;
+use Flarum\Api\Context;
+use Flarum\Api\Resource\ForumResource;
+use Flarum\Api\Schema;
 use Flarum\Discussion\Event\Saving as DiscussionSaving;
 use Flarum\Extend;
 use Flarum\Post\Event\Saving as PostSaving;
@@ -24,10 +26,11 @@ return [
     (new Extend\Settings())
         ->serializeToForum('hCaptchaDarkMode', 'hcaptcha-theme_dark_mode', 'boolVal'),
 
-    (new Extend\ApiSerializer(ForumSerializer::class))
-        ->attribute('postWithoutHCaptcha', function (ForumSerializer $serializer) {
-            return $serializer->getActor()->hasPermission('ralkage-hcaptcha.postWithoutHCaptcha');
-        }),
+    (new Extend\ApiResource(ForumResource::class))
+        ->fields(fn () => [
+            Schema\Boolean::make('postWithoutHCaptcha')
+                ->get(fn ($forum, Context $context) => $context->getActor()->hasPermission('ralkage-hcaptcha.postWithoutHCaptcha')),
+        ]),
 
     (new Extend\Validator(HCaptchaValidator::class))
         ->configure(AddValidatorRule::class),
