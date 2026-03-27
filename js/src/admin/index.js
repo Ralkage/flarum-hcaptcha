@@ -32,6 +32,18 @@ app.initializers.add('ralkage/flarum-ext-hcaptcha', () => {
       type: 'password',
       required: true,
     })
+    .registerSetting({
+      setting: 'hcaptcha-theme_dark_mode',
+      label: app.translator.trans('ralkage-hcaptcha.admin.settings.dark_mode_label'),
+      help: app.translator.trans('ralkage-hcaptcha.admin.settings.dark_mode_help'),
+      type: 'switch',
+    })
+    .registerSetting({
+      setting: 'ralkage-hcaptcha.enable_login',
+      label: app.translator.trans('ralkage-hcaptcha.admin.settings.enable_login_label'),
+      help: app.translator.trans('ralkage-hcaptcha.admin.settings.enable_login_help'),
+      type: 'switch',
+    })
     .registerPermission(
       {
         permission: 'ralkage-hcaptcha.postWithoutHCaptcha',
