@@ -6,7 +6,7 @@ function loadHCaptchaScript() {
 
     return new Promise((resolve, reject) => {
         const script = document.createElement('script');
-        script.src = `https://hcaptcha.com/1/api.js?hl=${app.translator.locale}&render=explicit`;
+        script.src = `https://js.hcaptcha.com/1/api.js?hl=${app.translator.locale}&render=explicit`;
         script.async = true;
         script.onload = () => {
             app.hcaptchaLoaded = true;

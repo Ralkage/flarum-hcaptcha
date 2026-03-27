@@ -15,7 +15,6 @@ export default class HCaptchaState {
         this.widgetId = hcaptcha.render(element, {
             sitekey: app.data['ralkage-hcaptcha.credentials.site'],
             theme: app.forum.attribute('hCaptchaDarkMode') ? 'dark' : 'light',
-            type: app.data['ralkage-hcaptcha.type'],
             size: app.data['ralkage-hcaptcha.type'] === 'invisible' ? 'invisible' : 'normal',
             callback: this.callback,
             'error-callback': () => {
