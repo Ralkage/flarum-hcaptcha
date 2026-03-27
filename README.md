@@ -1,27 +1,42 @@
-# Flarum hCaptcha
+# hCaptcha — Flarum Extension
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge) [![Latest Stable Version](https://img.shields.io/packagist/v/ralkage/flarum-hcaptcha.svg?style=for-the-badge)](https://packagist.org/packages/ralkage/flarum-hcaptcha) [![PayPal](https://img.shields.io/badge/paypal-ralkage-4cl?style=for-the-badge&logo=paypal)](https://paypal.me/ralkage)
+Increase your [Flarum](https://flarum.org) forum's security with [hCaptcha](https://www.hcaptcha.com/). Protects registration, new discussions, and replies from spam and abuse.
 
-A [Flarum](http://flarum.org) extension. Increase your Flarum forum's security with hCaptcha.
+## Features
 
-### Installation
+- **Registration Protection** — Requires hCaptcha during user sign-up
+- **Post Protection** — Requires hCaptcha when creating discussions and replies
+- **Checkbox & Invisible Modes** — Standard visible checkbox or transparent invisible challenge
+- **Permission Bypass** — Exempt specific user groups from captcha via admin permissions
+- **Dark Mode Support** — Automatically matches your forum's theme
 
-Install with composer:
+## Requirements
 
-```sh
-composer require ralkage/flarum-hcaptcha:"*"
-```
+- Flarum `^1.8`
+- PHP `^8.0`
 
-### Updating
+## Links
 
-```sh
-composer update ralkage/flarum-hcaptcha:"*"
-php flarum migrate
-php flarum cache:clear
-```
-
-### Links
-
+- [Ralkage](https://ralkage.com)
+- [Github](https://github.com/Ralkage/flarum-hcaptcha)
 - [Packagist](https://packagist.org/packages/ralkage/flarum-hcaptcha)
-- [GitHub](https://github.com/ralkage/flarum-hcaptcha)
 - [Discuss](https://discuss.flarum.org/d/28257)
+
+## Installation
+
+```bash
+composer require ralkage/flarum-hcaptcha
+```
+
+Then enable it in your Flarum admin panel under **Extensions**.
+
+## Setup
+
+1. Create an account at [hCaptcha](https://dashboard.hcaptcha.com/) and get your **Site Key** and **Secret Key**.
+2. Go to **Admin → hCaptcha** and enter your credentials.
+3. Choose between **Checkbox** (visible) or **Invisible** mode.
+4. Optionally adjust which user groups can bypass the captcha under **Permissions**.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

@@ -1,41 +1,21 @@
 <?php
 
-/*
- * This file is part of ralkage/flarum-hcaptcha.
- *
- * Copyright (c) Christian Lopez.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Ralkage\HCaptcha\Listeners;
 
 use Flarum\Post\Event\Saving;
-use Ralkage\HCaptcha\Validators\HCaptchaValidator;
 use Illuminate\Support\Arr;
+use Ralkage\HCaptcha\Validators\HCaptchaValidator;
 
 class ReplyPostValidate
 {
-    /**
-     * @var HCaptchaValidator
-     */
-    protected $validator;
+    public function __construct(
+        protected HCaptchaValidator $validator
+    ) {}
 
-    /**
-     * @param HCaptchaValidator $validator
-     */
-    public function __construct(HCaptchaValidator $validator)
-    {
-        $this->validator = $validator;
-    }
-
-    public function handle(Saving $event)
+    public function handle(Saving $event): void
     {
         if (!$event->post->exists) {
-            // If it's a new discussion, the hCaptcha is already validated in discussion saving event
-            // When this code runs, the discussion already exists, and the number has not been assigned to the post yet
-            // So we look in the discussion number index, just like the reply permission check does in PostReplyHandler
+            // First post in a discussion is already validated by StartDiscussionValidate
             if ($event->post->discussion->post_number_index === 0) {
                 return;
             }

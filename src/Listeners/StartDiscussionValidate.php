@@ -1,36 +1,18 @@
 <?php
 
-/*
- * This file is part of ralkage/flarum-hcaptcha.
- *
- * Copyright (c) Christian Lopez.
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Ralkage\HCaptcha\Listeners;
 
 use Flarum\Discussion\Event\Saving;
-use Ralkage\HCaptcha\Validators\HCaptchaValidator;
 use Illuminate\Support\Arr;
+use Ralkage\HCaptcha\Validators\HCaptchaValidator;
 
 class StartDiscussionValidate
 {
-    /**
-     * @var HCaptchaValidator
-     */
-    protected $validator;
+    public function __construct(
+        protected HCaptchaValidator $validator
+    ) {}
 
-    /**
-     * @param HCaptchaValidator $validator
-     */
-    public function __construct(HCaptchaValidator $validator)
-    {
-        $this->validator = $validator;
-    }
-
-    public function handle(Saving $event)
+    public function handle(Saving $event): void
     {
         if (!$event->discussion->exists) {
             if ($event->actor->hasPermission('ralkage-hcaptcha.postWithoutHCaptcha')) {

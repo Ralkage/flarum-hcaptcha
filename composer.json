@@ -13,16 +13,17 @@
     "type": "flarum-extension",
     "license": "MIT",
     "require": {
-        "flarum/core": "^1.0",
-        "mitloshuk/hcaptcha": "^1.2"
+        "php": "^8.0",
+        "flarum/core": "^1.8"
     },
     "authors": [
         {
-            "name": "Christian Lopez",
+            "name": "Ralkage",
             "email": "me@ralkage.com",
-            "role": "Developer"
+            "homepage": "https://ralkage.com"
         }
     ],
+    "homepage": "https://ralkage.com",
     "support": {
         "source": "https://github.com/Ralkage/flarum-hcaptcha",
         "forum": "https://discuss.flarum.org/d/28257"
