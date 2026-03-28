@@ -17,6 +17,12 @@ export default class HCaptchaState {
             theme: app.forum.attribute('hCaptchaDarkMode') ? 'dark' : 'light',
             size: app.data['ralkage-hcaptcha.type'] === 'invisible' ? 'invisible' : 'normal',
             callback: this.callback,
+            'expired-callback': () => {
+                this.reset();
+            },
+            'chalexpired-callback': () => {
+                this.reset();
+            },
             'error-callback': () => {
                 this.errorCallback({
                     type: 'error',

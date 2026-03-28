@@ -7,9 +7,11 @@ use Flarum\Api\Resource\ForumResource;
 use Flarum\Api\Schema;
 use Flarum\Discussion\Event\Saving as DiscussionSaving;
 use Flarum\Extend;
+use Flarum\Forum\LogInValidator;
 use Flarum\Post\Event\Saving as PostSaving;
 use Flarum\User\Event\Saving as UserSaving;
 use Ralkage\HCaptcha\Listeners\AddValidatorRule;
+use Ralkage\HCaptcha\Listeners\ConfigureLoginValidator;
 use Ralkage\HCaptcha\Validators\HCaptchaValidator;
 
 return [
@@ -24,7 +26,8 @@ return [
     new Extend\Locales(__DIR__ . '/resources/locale'),
 
     (new Extend\Settings())
-        ->serializeToForum('hCaptchaDarkMode', 'hcaptcha-theme_dark_mode', 'boolVal'),
+        ->serializeToForum('hCaptchaDarkMode', 'hcaptcha-theme_dark_mode', 'boolVal')
+        ->serializeToForum('hCaptchaEnableLogin', 'ralkage-hcaptcha.enable_login', 'boolVal'),
 
     (new Extend\ApiResource(ForumResource::class))
         ->fields(fn () => [
@@ -34,6 +37,9 @@ return [
 
     (new Extend\Validator(HCaptchaValidator::class))
         ->configure(AddValidatorRule::class),
+
+    (new Extend\Validator(LogInValidator::class))
+        ->configure(ConfigureLoginValidator::class),
 
     (new Extend\Event())
         ->listen(UserSaving::class, Listeners\RegisterValidate::class)
