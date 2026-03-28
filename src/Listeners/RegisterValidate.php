@@ -14,7 +14,7 @@ class RegisterValidate
 
     public function handle(Saving $event): void
     {
-        if (!$event->user->exists) {
+        if (!$event->user->exists && !$event->actor->isAdmin()) {
             $this->validator->assertValid([
                 'hcaptcha' => Arr::get($event->data, 'attributes.h-captcha-response'),
             ]);
