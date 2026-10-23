@@ -6,7 +6,7 @@ use Flarum\Foundation\AbstractValidator;
 
 class HCaptchaValidator extends AbstractValidator
 {
-    protected $rules = [
+    protected array $rules = [
         'hcaptcha' => ['required', 'hcaptcha'],
     ];
 }
